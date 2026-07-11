@@ -1,0 +1,97 @@
+{
+  "docs": [
+    {
+      "_id": "ambedkar-social-innovation-incubation-mission",
+      "type": "funding_opportunity",
+      "grant_name": "Ambedkar Social Innovation and Incubation Mission (ASIIM)",
+      "provider": {
+        "name": "Ministry of Social Justice and Empowerment",
+        "type": "government"
+      },
+      "description": "Equity-style support and handholding for SC youth, SC differently abled entrepreneurs, and social-innovation startups identified through incubators, hackathons, or CSR-supported pathways.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 3000000,
+        "currency": "INR",
+        "funding_type": "equity_investment"
+      },
+      "eligibility": {
+        "startup_stages": ["idea", "prototype", "mvp", "early-stage"],
+        "industries": ["social impact", "technology", "education", "healthcare", "livelihoods"],
+        "allowed_locations": ["India"],
+        "company_requirements": [
+          "Selected venture may need to incorporate as a Private Limited or Public Limited company before receiving support.",
+          "SC entrepreneur should hold at least 51 percent shareholding and management control where applicable."
+        ],
+        "applicant_requirements": [
+          "SC students, SC differently abled youth, or SC entrepreneurs identified through eligible incubators, hackathons, or CSR-supported pathways."
+        ],
+        "exclusions": ["Investments in RBI negative sectors are not eligible."]
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.myscheme.gov.in/schemes/asiim",
+        "required_documents": [
+          "Proof of SC or SC differently abled status",
+          "Company incorporation documents, where applicable",
+          "Shareholding pattern",
+          "Incubator or selection proof",
+          "Innovation proposal"
+        ],
+        "application_steps": [
+          "Apply through the official process or eligible incubator route.",
+          "Submit proof of category, selection pathway, and startup idea.",
+          "Complete selection and incubation review.",
+          "Incorporate or restructure the entity if required before disbursement."
+        ]
+      },
+      "status": "unknown",
+      "source": "https://www.myscheme.gov.in/schemes/asiim"
+    },
+    {
+      "_id": "startup-india-seed-fund-scheme",
+      "type": "funding_opportunity",
+      "grant_name": "Startup India Seed Fund Scheme (SISFS)",
+      "provider": {
+        "name": "DPIIT",
+        "type": "government"
+      },
+      "description": "Seed support through approved incubators to early-stage Indian startups for proof of concept, prototype development, product trials, market entry, and commercialization.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 5000000,
+        "currency": "INR",
+        "funding_type": "seed_funding"
+      },
+      "eligibility": {
+        "startup_stages": ["idea", "prototype", "mvp", "early-stage"],
+        "industries": ["agriculture", "deeptech", "healthcare", "education", "technology"],
+        "allowed_locations": ["India"],
+        "company_requirements": [
+          "DPIIT recognition is mandatory.",
+          "Incorporation age must be less than 2 years."
+        ],
+        "applicant_requirements": ["Indian entrepreneurs with DPIIT recognized startup."],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://seedfund.startupindia.gov.in",
+        "required_documents": [
+          "DPIIT Recognition Certificate",
+          "Pitch Deck",
+          "Company registration details"
+        ],
+        "application_steps": [
+          "Apply through official Startup India Seed Fund portal.",
+          "Select up to 3 incubators for evaluation.",
+          "Pitch to the selected incubator committee."
+        ]
+      },
+      "status": "active",
+      "source": "https://seedfund.startupindia.gov.in"
+    }
+  ]
+}

@@ -1,0 +1,1503 @@
+{
+  "docs": [
+    {
+      "_id": "ambedkar-social-innovation-incubation-mission",
+      "type": "funding_opportunity",
+      "grant_name": "Ambedkar Social Innovation and Incubation Mission (ASIIM)",
+      "provider": {
+        "name": "Ministry of Social Justice and Empowerment",
+        "type": "government"
+      },
+      "description": "Equity-style support and handholding for SC youth, SC differently abled entrepreneurs, and social-innovation startups identified through incubators, hackathons, or CSR-supported pathways.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 3000000,
+        "currency": "INR",
+        "funding_type": "equity_investment"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "social impact",
+          "technology",
+          "education",
+          "healthcare",
+          "livelihoods"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Selected venture may need to incorporate as a Private Limited or Public Limited company before receiving support.",
+          "SC entrepreneur should hold at least 51 percent shareholding and management control where applicable."
+        ],
+        "applicant_requirements": [
+          "SC students, SC differently abled youth, or SC entrepreneurs identified through eligible incubators, hackathons, or CSR-supported pathways."
+        ],
+        "exclusions": [
+          "Investments in RBI negative sectors are not eligible."
+        ]
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.myscheme.gov.in/schemes/asiim",
+        "required_documents": [
+          "Proof of SC or SC differently abled status",
+          "Company incorporation documents, where applicable",
+          "Shareholding pattern",
+          "Incubator or selection proof",
+          "Innovation proposal"
+        ],
+        "application_steps": [
+          "Apply through the official process or eligible incubator route.",
+          "Submit proof of category, selection pathway, and startup idea.",
+          "Complete selection and incubation review.",
+          "Incorporate or restructure the entity if required before disbursement."
+        ]
+      },
+      "status": "unknown",
+      "source": "https://www.myscheme.gov.in/schemes/asiim"
+    },
+    {
+      "_id": "nsf-americas-seed-fund-sbir-sttr",
+      "type": "funding_opportunity",
+      "grant_name": "America's Seed Fund powered by NSF (SBIR/STTR)",
+      "provider": {
+        "name": "U.S. National Science Foundation",
+        "type": "government"
+      },
+      "description": "Non-dilutive seed funding for U.S. startups developing deep technologies with commercial potential.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 2000000,
+        "currency": "USD",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "research",
+          "prototype",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "artificial intelligence",
+          "energy",
+          "medical devices",
+          "robotics",
+          "semiconductors",
+          "deep technology",
+          "advanced manufacturing"
+        ],
+        "allowed_locations": [
+          "United States"
+        ],
+        "company_requirements": [
+          "Company should be a for-profit entity located in the United States.",
+          "Company should meet SBIR/STTR small-business eligibility rules.",
+          "Technology should be innovative, technically risky, and commercially promising."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://seedfund.nsf.gov/",
+        "required_documents": [
+          "Project pitch",
+          "Full proposal, if invited",
+          "Company registration and ownership details",
+          "Technical work plan",
+          "Commercialization plan",
+          "Budget and biosketches"
+        ],
+        "application_steps": [
+          "Review NSF funding topic areas.",
+          "Submit a Project Pitch.",
+          "If invited, prepare and submit the full proposal.",
+          "Complete NSF review and award process."
+        ]
+      },
+      "status": "active",
+      "source": "https://seedfund.nsf.gov/"
+    },
+    {
+      "_id": "birac-biotechnology-ignition-grant",
+      "type": "funding_opportunity",
+      "grant_name": "Biotechnology Ignition Grant (BIG)",
+      "provider": {
+        "name": "Biotechnology Industry Research Assistance Council (BIRAC)",
+        "type": "government"
+      },
+      "description": "Early-stage grant-in-aid for biotech startups and innovators to translate innovative ideas into proof of concept.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 5000000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "proof-of-concept"
+        ],
+        "industries": [
+          "biotechnology",
+          "healthcare",
+          "medtech",
+          "agriculture",
+          "life sciences",
+          "bioindustrial"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Proposal should have biotechnology or life-sciences innovation with commercialization potential.",
+          "Startup or innovator should be able to work with a BIG partner for mentoring and monitoring."
+        ],
+        "applicant_requirements": [
+          "Applicant should be able to submit a technical proposal and commercialization plan."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://birac.nic.in/big.php",
+        "required_documents": [
+          "BIG proposal format",
+          "Technical project plan",
+          "Commercialization plan",
+          "Budget and milestone plan",
+          "Founder or team credentials",
+          "IP or novelty statement, if applicable"
+        ],
+        "application_steps": [
+          "Watch for the regular January and July BIRAC BIG calls.",
+          "Register or log in on the BIRAC application system.",
+          "Prepare the BIG proposal using the official format.",
+          "Submit the proposal before the call closes.",
+          "Selected applicants work with BIG partners for mentoring and monitoring."
+        ]
+      },
+      "status": "active",
+      "source": "https://birac.nic.in/big.php"
+    },
+    {
+      "_id": "birac-leap-fund",
+      "type": "funding_opportunity",
+      "grant_name": "BIRAC Launching Entrepreneurial Driven Affordable Products (LEAP) Fund",
+      "provider": {
+        "name": "Biotechnology Industry Research Assistance Council (BIRAC)",
+        "type": "government"
+      },
+      "description": "Equity-linked support through selected BioNEST partners for biotech startups moving from proof of concept to pilot and commercialization.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "INR",
+        "funding_type": "equity_investment"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "proof-of-concept",
+          "pilot",
+          "commercialization",
+          "early-stage"
+        ],
+        "industries": [
+          "biotechnology",
+          "life sciences",
+          "healthcare",
+          "agritech",
+          "medtech"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Startup should have a biotech product or technology ready for pilot or commercialization.",
+          "Startup should apply through a BIRAC LEAP Fund partner.",
+          "Startup should be suitable for follow-on angel or venture funding."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://birac.nic.in/leapFundNew.php",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "Pilot or commercialization plan",
+          "Customer validation or product-readiness evidence",
+          "Financial and investment-readiness details"
+        ],
+        "application_steps": [
+          "Contact an eligible BIRAC LEAP Fund partner.",
+          "Submit startup, technology, and commercialization details.",
+          "Complete partner screening and investment due diligence.",
+          "Execute investment and milestone-monitoring documents after selection."
+        ]
+      },
+      "status": "active",
+      "source": "https://birac.nic.in/leapFundNew.php"
+    },
+    {
+      "_id": "birac-seed-fund",
+      "type": "funding_opportunity",
+      "grant_name": "BIRAC Sustainable Entrepreneurship and Enterprise Development (SEED) Fund",
+      "provider": {
+        "name": "Biotechnology Industry Research Assistance Council (BIRAC)",
+        "type": "government"
+      },
+      "description": "Post-proof-of-concept seed support through BioNEST incubator partners to help biotech startups become angel-investment ready.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 3000000,
+        "currency": "INR",
+        "funding_type": "equity_investment"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "post-proof-of-concept",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "biotechnology",
+          "life sciences",
+          "healthcare",
+          "agritech",
+          "medtech"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Startup should be a biotech or life-sciences startup at post-proof-of-concept stage.",
+          "Startup should apply through a BIRAC SEED Fund Partner BioNEST incubator.",
+          "Startup should need bridge capital before angel or venture investment."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://birac.nic.in/seedFundNew.php",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "Proof-of-concept evidence",
+          "Incubator recommendation or partner process documents",
+          "Milestone-based utilization plan"
+        ],
+        "application_steps": [
+          "Identify an eligible BIRAC SEED Fund Partner BioNEST incubator.",
+          "Submit startup and project details through the partner process.",
+          "Complete screening, pitching, and due diligence.",
+          "Execute investment and monitoring documents after selection."
+        ]
+      },
+      "status": "active",
+      "source": "https://birac.nic.in/seedFundNew.php"
+    },
+    {
+      "_id": "startup-india-credit-guarantee-scheme",
+      "type": "funding_opportunity",
+      "grant_name": "Credit Guarantee Scheme for Startups (CGSS)",
+      "provider": {
+        "name": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+        "type": "government"
+      },
+      "description": "Credit guarantee support for loans extended by member institutions to eligible DPIIT-recognized startups.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 200000000,
+        "currency": "INR",
+        "funding_type": "loan"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "early-stage",
+          "growth",
+          "scale-up"
+        ],
+        "industries": [
+          "all sectors",
+          "technology",
+          "manufacturing",
+          "services"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Startup must be recognized by DPIIT.",
+          "Startup must not be in default to any lending or investing institution.",
+          "Startup must not be classified as a non-performing asset under RBI guidelines.",
+          "Eligibility must be certified by the member institution providing credit."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "DPIIT recognition certificate",
+          "Loan application and lender-requested credit documents",
+          "Bank statements and financial statements"
+        ],
+        "application_steps": [
+          "Check eligibility with a participating member institution.",
+          "Submit startup and credit details to the lender.",
+          "Lender evaluates credit and certifies eligibility for guarantee cover.",
+          "Loan is processed under the applicable CGSS framework."
+        ]
+      },
+      "status": "active",
+      "source": "https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html"
+    },
+    {
+      "_id": "eic-accelerator-2026",
+      "type": "funding_opportunity",
+      "grant_name": "EIC Accelerator 2026",
+      "provider": {
+        "name": "European Innovation Council",
+        "type": "international"
+      },
+      "description": "European deep-tech and breakthrough-innovation funding for startups and SMEs, combining grant funding with possible equity investment.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 2500000,
+        "currency": "EUR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "pilot",
+          "scale-up",
+          "growth"
+        ],
+        "industries": [
+          "deep technology",
+          "healthcare",
+          "climate",
+          "energy",
+          "digital",
+          "industrial technology"
+        ],
+        "allowed_locations": [
+          "European Union",
+          "Horizon Europe associated countries"
+        ],
+        "company_requirements": [
+          "Single startups and SMEs may apply.",
+          "Individuals intending to launch an SME may apply under the programme rules.",
+          "Small mid-caps may apply for equity-only support where eligible.",
+          "Innovation should be high-risk, high-potential, and capable of creating or disrupting markets."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
+        "required_documents": [
+          "Short proposal or platform submission",
+          "Full proposal",
+          "Pitch deck",
+          "Business plan",
+          "Financial information",
+          "Freedom-to-operate or IP details, if applicable"
+        ],
+        "application_steps": [
+          "Review EIC Accelerator Open or Challenge fit.",
+          "Submit the short application where required.",
+          "Prepare the full proposal and pitch materials if invited or eligible.",
+          "Complete remote evaluation and interview stages."
+        ]
+      },
+      "status": "active",
+      "source": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en"
+    },
+    {
+      "_id": "grants-gov-federal-opportunities",
+      "type": "funding_opportunity",
+      "grant_name": "Grants.gov Federal Grant Opportunities",
+      "provider": {
+        "name": "Grants.gov",
+        "type": "government"
+      },
+      "description": "Search portal for U.S. federal grant opportunities across agencies, useful for startups, nonprofits, research teams, and small businesses where eligible.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "USD",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "research",
+          "prototype",
+          "early-stage",
+          "growth"
+        ],
+        "industries": [
+          "all sectors",
+          "research",
+          "technology",
+          "healthcare",
+          "environment",
+          "education"
+        ],
+        "allowed_locations": [
+          "United States"
+        ],
+        "company_requirements": [
+          "Eligibility depends on each federal funding opportunity announcement.",
+          "Applicant should verify whether small businesses or for-profit entities are eligible.",
+          "Applicant may need SAM.gov registration and Grants.gov workspace access."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.grants.gov/search-grants",
+        "required_documents": [
+          "Opportunity-specific forms",
+          "SAM.gov registration",
+          "Budget",
+          "Project narrative",
+          "Eligibility and organization documents"
+        ],
+        "application_steps": [
+          "Search Grants.gov by keyword, agency, category, and eligibility.",
+          "Read the full funding opportunity announcement.",
+          "Confirm applicant eligibility and deadline.",
+          "Apply through Grants.gov Workspace or the specified agency process."
+        ]
+      },
+      "status": "active",
+      "source": "https://www.grants.gov/search-grants"
+    },
+    {
+      "_id": "idex-disc-12-re-open-2026",
+      "type": "funding_opportunity",
+      "grant_name": "iDEX Defence India Startup Challenge DISC 12 Re Open",
+      "provider": {
+        "name": "Defence Innovation Organisation - iDEX",
+        "type": "government"
+      },
+      "description": "Challenge grant for startups, MSMEs, and innovators building defence and national-security prototypes or commercialization-ready solutions.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 15000000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "early-stage",
+          "commercialization"
+        ],
+        "industries": [
+          "defence",
+          "aerospace",
+          "security",
+          "deep technology",
+          "robotics",
+          "artificial intelligence"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Applicant should be a startup, MSME, or innovator eligible under iDEX challenge rules.",
+          "Solution should address the listed defence problem statement."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": "2026-07-15",
+        "application_url": "https://idex.gov.in/challenges",
+        "required_documents": [
+          "Challenge proposal",
+          "Pitch deck",
+          "Prototype or technology description",
+          "Team details",
+          "Budget and milestone plan",
+          "Company registration documents, if applicable"
+        ],
+        "application_steps": [
+          "Open the iDEX challenges portal.",
+          "Select DISC 12 Re Open.",
+          "Review the problem statement and grant terms.",
+          "Submit the proposal and supporting documents before the deadline."
+        ]
+      },
+      "status": "active",
+      "source": "https://idex.gov.in/challenges"
+    },
+    {
+      "_id": "idex-open-challenge-2026",
+      "type": "funding_opportunity",
+      "grant_name": "iDEX Open Challenge 2026",
+      "provider": {
+        "name": "Defence Innovation Organisation - iDEX",
+        "type": "government"
+      },
+      "description": "Open challenge route for startups, MSMEs, and innovators proposing defence and security solutions outside a narrow predefined problem statement.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 15000000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "early-stage",
+          "commercialization"
+        ],
+        "industries": [
+          "defence",
+          "aerospace",
+          "security",
+          "deep technology",
+          "robotics",
+          "artificial intelligence"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Applicant should be a startup, MSME, or innovator eligible under iDEX challenge rules.",
+          "Solution should be relevant to national defence or security use cases."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": "2026-06-30",
+        "application_url": "https://idex.gov.in/challenges",
+        "required_documents": [
+          "Open challenge proposal",
+          "Pitch deck",
+          "Prototype or technology description",
+          "Team details",
+          "Budget and milestone plan",
+          "Company registration documents, if applicable"
+        ],
+        "application_steps": [
+          "Open the iDEX challenges portal.",
+          "Select Open Challenge.",
+          "Review the instructions and eligibility criteria.",
+          "Submit the proposal before the deadline."
+        ]
+      },
+      "status": "active",
+      "source": "https://idex.gov.in/challenges"
+    },
+    {
+      "_id": "ksum-innovation-grant",
+      "type": "funding_opportunity",
+      "grant_name": "Kerala Startup Mission Innovation Grant",
+      "provider": {
+        "name": "Kerala Startup Mission",
+        "type": "government"
+      },
+      "description": "Stage-wise grant support for idea, productization, scale-up, market acceleration, student innovators, and women or transgender founders.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 1500000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "mvp",
+          "early-stage",
+          "scale-up"
+        ],
+        "industries": [
+          "technology",
+          "deep technology",
+          "hardware",
+          "software",
+          "social impact"
+        ],
+        "allowed_locations": [
+          "Kerala",
+          "India"
+        ],
+        "company_requirements": [
+          "For idea grants, the innovator may be based in or outside Kerala, but incorporation and KSUM unique ID are mandatory for fund disbursement.",
+          "For other grants, startup should have completed company incorporation and KSUM unique ID certification."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://grants.startupmission.in/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "KSUM unique ID, where required",
+          "Company incorporation documents, where required"
+        ],
+        "application_steps": [
+          "Apply through the KSUM grant portal when the grant round is open.",
+          "Submit complete application and supporting documents.",
+          "KSUM screens applications and may run pre-evaluation if volume is high.",
+          "Shortlisted startups attend final evaluation."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupmission.kerala.gov.in/schemes/innovation-grant"
+    },
+    {
+      "_id": "ksum-rd-grant",
+      "type": "funding_opportunity",
+      "grant_name": "Kerala Startup Mission R&D Grant",
+      "provider": {
+        "name": "Kerala Startup Mission",
+        "type": "government"
+      },
+      "description": "Grant support for hardware startups with significant R&D components and working prototypes.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 3000000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "early-stage",
+          "scale-up"
+        ],
+        "industries": [
+          "hardware",
+          "deep technology",
+          "electronics",
+          "iot",
+          "medtech",
+          "manufacturing"
+        ],
+        "allowed_locations": [
+          "Kerala"
+        ],
+        "company_requirements": [
+          "Startup should have a working prototype.",
+          "Startup should be a member of at least one approved incubator in Kerala.",
+          "At least 50 percent of the grant should be used for hardware.",
+          "Not more than 20 percent should be used for marketing expenses."
+        ],
+        "applicant_requirements": [],
+        "exclusions": [
+          "R&D grants cannot be used to cover manpower or hiring costs."
+        ]
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startupmission.kerala.gov.in/schemes/rd-grant",
+        "required_documents": [
+          "Business plan",
+          "Prototype details",
+          "Incubator membership proof",
+          "R&D budget",
+          "Patent details, if applicable",
+          "Scale-up or product plan"
+        ],
+        "application_steps": [
+          "Apply through the KSUM process when intake is open.",
+          "Submit business plan and R&D budget.",
+          "Complete screening and final evaluation.",
+          "Use funds according to hardware and marketing limits after approval."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupmission.kerala.gov.in/schemes/rd-grant"
+    },
+    {
+      "_id": "ksum-seed-fund",
+      "type": "funding_opportunity",
+      "grant_name": "Kerala Startup Mission Seed Fund",
+      "provider": {
+        "name": "Kerala Startup Mission",
+        "type": "government"
+      },
+      "description": "Soft loan seed support for Kerala startups to support product development, customer development, marketing, and scale-up.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 1500000,
+        "currency": "INR",
+        "funding_type": "loan"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "technology",
+          "hardware",
+          "software",
+          "deep technology"
+        ],
+        "allowed_locations": [
+          "Kerala"
+        ],
+        "company_requirements": [
+          "Startup should be registered in Kerala as an LLP or Private Limited Company.",
+          "Startup should have an active KSUM Unique ID.",
+          "Startup should have DPIIT registration and active or active-compliant MCA status.",
+          "Startup should work on an innovative product or technology."
+        ],
+        "applicant_requirements": [],
+        "exclusions": [
+          "The scheme is generally not for service startups or SMEs working only in trade and commerce.",
+          "The fund cannot be used for founders' salaries, costly assets, or patenting expenses."
+        ]
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startups.startupmission.in/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "KSUM Unique ID",
+          "DPIIT registration",
+          "Final pitch deck",
+          "Fund utilization plan",
+          "Project milestones and timeline"
+        ],
+        "application_steps": [
+          "Submit the online seed fund application through KSUM.",
+          "Complete initial evaluation and one-to-one screening call.",
+          "Attend initial and final pitching rounds.",
+          "Submit requested documents and execute agreements after selection.",
+          "Receive disbursement in installments based on milestones."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupmission.kerala.gov.in/schemes/seed-fund"
+    },
+    {
+      "_id": "ksum-technology-commercialisation-support",
+      "type": "funding_opportunity",
+      "grant_name": "Kerala Startup Mission Technology Transfer and Commercialisation Support",
+      "provider": {
+        "name": "Kerala Startup Mission",
+        "type": "government"
+      },
+      "description": "Reimbursement support for startups that license technology from Indian government research institutions and develop it into a commercial product.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 1000000,
+        "currency": "INR",
+        "funding_type": "financial_assistance"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "technology-transfer",
+          "product-development",
+          "commercialization"
+        ],
+        "industries": [
+          "technology",
+          "deep technology",
+          "research commercialization"
+        ],
+        "allowed_locations": [
+          "Kerala"
+        ],
+        "company_requirements": [
+          "Startup should be registered in Kerala as an LLP or Private Limited Company.",
+          "Startup should have active KSUM registration.",
+          "Startup should have DPIIT registration and active or active-compliant MCA status.",
+          "Startup should have purchased or sourced a technology license from a Government research institution in India."
+        ],
+        "applicant_requirements": [
+          "Startup is expected to commercialize the licensed product within two years."
+        ],
+        "exclusions": [
+          "Support is limited to eligible technology transfer costs.",
+          "Startup should not have pending dues with government agencies, KSUM, or incubators."
+        ]
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startupmission.kerala.gov.in/schemes/technology-commercialisation",
+        "required_documents": [
+          "Invoice and receipt from research organization",
+          "Bank statement showing technology fee transfer",
+          "Technology transfer agreement",
+          "Company incorporation documents",
+          "Director or applicant residence proof",
+          "No-duplicate-reimbursement undertaking",
+          "Canceled cheque and company bank details"
+        ],
+        "application_steps": [
+          "Submit online application.",
+          "Submit required hard-copy documents where requested.",
+          "Complete KSUM review and documentation.",
+          "Receive reimbursement support after approval."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupmission.kerala.gov.in/schemes/technology-commercialisation"
+    },
+    {
+      "_id": "birac-sbiri",
+      "type": "funding_opportunity",
+      "grant_name": "Small Business Innovation Research Initiative (SBIRI)",
+      "provider": {
+        "name": "Biotechnology Industry Research Assistance Council (BIRAC)",
+        "type": "government"
+      },
+      "description": "Support for early-stage and pre-proof-of-concept biotechnology research by companies, LLPs, and eligible industry-academia collaborations.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "research",
+          "pre-proof-of-concept",
+          "prototype"
+        ],
+        "industries": [
+          "biotechnology",
+          "healthcare",
+          "food and nutrition",
+          "agriculture",
+          "life sciences"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Applicant may be a company incorporated under the Companies Act, 2013.",
+          "Applicant may be an LLP incorporated under the Limited Liability Partnership Act, 2008.",
+          "Company should have at least 51 percent ownership by Indian citizens where applicable.",
+          "Applicant should have adequate in-house facilities or be incubated at a recognized incubation facility."
+        ],
+        "applicant_requirements": [
+          "Academic collaborators may include Indian universities, colleges, national research laboratories, or eligible not-for-profit research institutions."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": "2026-09-01",
+        "deadline": "2026-10-15",
+        "application_url": "https://birac.nic.in/desc_new.php?id=217",
+        "required_documents": [
+          "SBIRI proposal",
+          "Company or LLP incorporation documents",
+          "Shareholding certificate",
+          "Project budget",
+          "In-house R&D or incubation proof",
+          "Collaborator documents, if applicable"
+        ],
+        "application_steps": [
+          "Use the regular SBIRI call window when open.",
+          "Prepare the proposal and supporting documents using BIRAC formats.",
+          "Submit through the BIRAC proposal system.",
+          "Complete technical, financial, and eligibility review."
+        ]
+      },
+      "status": "upcoming",
+      "source": "https://birac.nic.in/desc_new.php?id=217"
+    },
+    {
+      "_id": "stand-up-india-loan",
+      "type": "funding_opportunity",
+      "grant_name": "Stand-Up India Loan Scheme",
+      "provider": {
+        "name": "Small Industries Development Bank of India and participating banks",
+        "type": "government"
+      },
+      "description": "Bank loan support for SC, ST, and women entrepreneurs setting up greenfield enterprises in manufacturing, services, trading, or agri-allied activities.",
+      "funding": {
+        "minimum_amount": 1000000,
+        "maximum_amount": 10000000,
+        "currency": "INR",
+        "funding_type": "loan"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "early-stage"
+        ],
+        "industries": [
+          "manufacturing",
+          "services",
+          "trading",
+          "agri-allied"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Enterprise should be a greenfield venture.",
+          "For non-individual enterprises, at least 51 percent shareholding and controlling stake should be held by SC, ST, or woman entrepreneur."
+        ],
+        "applicant_requirements": [
+          "Applicant should be an SC, ST, or woman entrepreneur above 18 years."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.standupmitra.in/",
+        "required_documents": [
+          "Applicant identity and category proof",
+          "Business plan",
+          "Project cost and loan requirement",
+          "Bank-requested KYC and financial documents",
+          "Enterprise registration documents, if already incorporated"
+        ],
+        "application_steps": [
+          "Apply through the Stand-Up India portal or participating bank branch.",
+          "Complete borrower and project details.",
+          "Coordinate with the selected bank and handholding agency, if needed.",
+          "Complete bank appraisal and sanction process."
+        ]
+      },
+      "status": "active",
+      "source": "https://www.standupmitra.in/"
+    },
+    {
+      "_id": "startup-india-investor-connect",
+      "type": "funding_opportunity",
+      "grant_name": "Startup India Investor Connect",
+      "provider": {
+        "name": "Startup India",
+        "type": "government"
+      },
+      "description": "National platform that helps startups connect with investors for equity and growth funding conversations.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "INR",
+        "funding_type": "equity_investment"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "seed",
+          "early-stage",
+          "growth",
+          "scale-up"
+        ],
+        "industries": [
+          "all sectors",
+          "technology",
+          "deep technology",
+          "consumer",
+          "enterprise"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Startup should maintain a complete profile and fundraising information.",
+          "DPIIT recognition is preferred for Startup India ecosystem benefits."
+        ],
+        "applicant_requirements": [
+          "Founder should be ready with investor-facing materials and traction details."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://investorconnect.startupindia.gov.in/",
+        "required_documents": [
+          "Pitch deck",
+          "Company profile",
+          "Cap table summary",
+          "Fundraising ask and use-of-funds plan",
+          "Traction metrics"
+        ],
+        "application_steps": [
+          "Create or update the startup profile.",
+          "Upload investor-facing material.",
+          "Submit interest through the Investor Connect platform.",
+          "Respond to investor screening and follow-up requests."
+        ]
+      },
+      "status": "active",
+      "source": "https://investorconnect.startupindia.gov.in/"
+    },
+    {
+      "_id": "startup-india-seed-fund-scheme",
+      "type": "funding_opportunity",
+      "grant_name": "Startup India Seed Fund Scheme (SISFS)",
+      "provider": {
+        "name": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+        "type": "government"
+      },
+      "description": "Seed support through approved incubators for proof of concept, prototype development, product trials, market entry, and commercialization.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 5000000,
+        "currency": "INR",
+        "funding_type": "seed_funding"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "technology",
+          "deep technology",
+          "healthcare",
+          "agriculture",
+          "education",
+          "financial inclusion",
+          "energy",
+          "mobility",
+          "defence",
+          "space",
+          "waste management",
+          "water management"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [
+          "Startup must be recognized by DPIIT.",
+          "Startup must generally be incorporated not more than two years before application.",
+          "Startup should use technology in its product, service, business model, distribution model, or methodology.",
+          "Indian promoters should hold at least 51 percent shareholding at the time of application.",
+          "Startup should not have received more than INR 10 lakh of monetary support under another Central or State Government scheme, excluding permitted non-cash or prize support."
+        ],
+        "applicant_requirements": [
+          "Founders should apply through the Startup India Seed Fund portal and select eligible incubators."
+        ],
+        "exclusions": [
+          "Physical application submission is not required.",
+          "Incubators should not charge application, selection, disbursement, incubation, or monitoring fees to selected startups."
+        ]
+      },
+      "application": {
+        "open_date": "2021-04-19",
+        "deadline": "2026-05-31",
+        "application_url": "https://seedfund.startupindia.gov.in/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "DPIIT recognition certificate",
+          "PAN and GST details, if applicable",
+          "Startup video describing product, service, or business model, if requested"
+        ],
+        "application_steps": [
+          "Register or log in on the Startup India Seed Fund portal.",
+          "Complete the online startup application.",
+          "Choose up to three approved incubators in preference order.",
+          "Submit team, problem, product, market, business model, funding need, and utilization details.",
+          "Track incubator evaluation and selection status online."
+        ]
+      },
+      "status": "inactive",
+      "source": "https://seedfund.startupindia.gov.in/"
+    },
+    {
+      "_id": "startup-odisha-monthly-allowance",
+      "type": "funding_opportunity",
+      "grant_name": "Startup Odisha Monthly Allowance for Recognized Startups",
+      "provider": {
+        "name": "Startup Odisha",
+        "type": "government"
+      },
+      "description": "Monthly allowance for recognized Odisha startups that meet innovation, funding, patent, grant, or revenue criteria.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 264000,
+        "currency": "INR",
+        "funding_type": "financial_assistance"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "early-stage"
+        ],
+        "industries": [
+          "all sectors",
+          "social impact",
+          "clean energy",
+          "agriculture",
+          "healthcare",
+          "financial inclusion"
+        ],
+        "allowed_locations": [
+          "Odisha"
+        ],
+        "company_requirements": [
+          "Startup must be recognized under Startup Odisha.",
+          "If not registered in Odisha, startup should employ at least 50 percent of its qualified workforce in Odisha.",
+          "Startup should satisfy one of the listed financing, patent, grant, or revenue conditions."
+        ],
+        "applicant_requirements": [
+          "Women, transgender, SC, ST, SEBC, or PH founder categories with at least 50 percent equity may receive enhanced support."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startupodisha.gov.in/startup-incentives/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "Startup Odisha recognition proof",
+          "Proof of qualifying equity funding, patent, grant, or revenue run rate",
+          "Founder category proof, if claiming enhanced allowance"
+        ],
+        "application_steps": [
+          "Apply for Startup Odisha recognition.",
+          "After recognition, submit the monetary benefit application online.",
+          "Nodal agency reviews and forwards recommendation.",
+          "Startup Secretariat conducts due diligence and places the case before the Task Force.",
+          "Approved allowance is paid to the startup bank account."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupodisha.gov.in/startup-incentives/"
+    },
+    {
+      "_id": "startup-odisha-need-based-assistance",
+      "type": "funding_opportunity",
+      "grant_name": "Startup Odisha Need-Based Assistance",
+      "provider": {
+        "name": "Startup Odisha",
+        "type": "government"
+      },
+      "description": "Case-by-case support for raw materials, components, equipment, and other inputs needed for innovative product development or product improvement.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "INR",
+        "funding_type": "financial_assistance"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "prototype",
+          "mvp",
+          "product-development",
+          "early-stage"
+        ],
+        "industries": [
+          "all sectors",
+          "manufacturing",
+          "hardware",
+          "deep technology",
+          "agriculture",
+          "clean energy"
+        ],
+        "allowed_locations": [
+          "Odisha"
+        ],
+        "company_requirements": [
+          "Startup must be recognized under Startup Odisha.",
+          "Assistance must relate to an innovation-dependent requirement for raw material, components, or equipment.",
+          "Support is subject to Startup Council approval."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startupodisha.gov.in/startup-incentives/",
+        "required_documents": [
+          "Startup Odisha recognition proof",
+          "Self-contained need and utilization plan",
+          "Quotations or cost estimates",
+          "Innovation justification",
+          "Utilization certificate and bills after support is received"
+        ],
+        "application_steps": [
+          "Apply online with a need-based assistance plan.",
+          "Explain the innovation dependency and proposed utilization.",
+          "Complete review and council approval.",
+          "Submit utilization documents within the required period after support."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupodisha.gov.in/startup-incentives/"
+    },
+    {
+      "_id": "startup-odisha-product-development-marketing-assistance",
+      "type": "funding_opportunity",
+      "grant_name": "Startup Odisha Product Development and Marketing Assistance",
+      "provider": {
+        "name": "Startup Odisha",
+        "type": "government"
+      },
+      "description": "Grant assistance for recognized Odisha startups introducing innovative products into the market.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 1600000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "mvp",
+          "early-stage",
+          "market-entry"
+        ],
+        "industries": [
+          "all sectors",
+          "social impact",
+          "clean energy",
+          "agriculture",
+          "healthcare",
+          "financial inclusion"
+        ],
+        "allowed_locations": [
+          "Odisha"
+        ],
+        "company_requirements": [
+          "Startup must be recognized under Startup Odisha.",
+          "Startup should meet qualifying funding, grant, or revenue conditions.",
+          "Assistance should be for product development, marketing, or publicity of an innovative product."
+        ],
+        "applicant_requirements": [
+          "Women, transgender, SC, ST, SEBC, or PH founder categories with at least 50 percent equity may receive enhanced support."
+        ],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startupodisha.gov.in/startup-incentives/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "Startup Odisha recognition proof",
+          "Product development plan",
+          "Marketing or publicity plan",
+          "Proof of qualifying funding, grant, or revenue run rate",
+          "Utilization certificate and bills after disbursement"
+        ],
+        "application_steps": [
+          "Apply online for financial benefit after Startup Odisha recognition.",
+          "Submit product development and marketing plan.",
+          "Complete nodal agency review and Startup Secretariat due diligence.",
+          "Receive approval from the Task Force.",
+          "Submit utilization documents for advance and final payment milestones."
+        ]
+      },
+      "status": "active",
+      "source": "https://startupodisha.gov.in/startup-incentives/"
+    },
+    {
+      "_id": "us-sbir-sttr-federal-program",
+      "type": "funding_opportunity",
+      "grant_name": "U.S. SBIR/STTR Federal Program",
+      "provider": {
+        "name": "U.S. Small Business Administration",
+        "type": "government"
+      },
+      "description": "Federal small-business R&D funding program across participating U.S. agencies, with Phase I proof-of-concept and Phase II R&D awards.",
+      "funding": {
+        "minimum_amount": 50000,
+        "maximum_amount": 1800000,
+        "currency": "USD",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "research",
+          "proof-of-concept",
+          "prototype",
+          "early-stage"
+        ],
+        "industries": [
+          "deep technology",
+          "healthcare",
+          "energy",
+          "defence",
+          "space",
+          "education",
+          "environment"
+        ],
+        "allowed_locations": [
+          "United States"
+        ],
+        "company_requirements": [
+          "Company should be a for-profit entity located in the United States.",
+          "Company should generally have fewer than 500 employees.",
+          "Company should meet U.S. ownership and control requirements.",
+          "Company needs a Unique Entity ID from SAM.gov to receive awards."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://www.sbir.gov/apply",
+        "required_documents": [
+          "Agency-specific solicitation response",
+          "Technical proposal",
+          "Commercialization plan",
+          "Budget",
+          "SAM.gov and UEI registration details",
+          "Company ownership and employee details"
+        ],
+        "application_steps": [
+          "Search topics and solicitations on SBIR.gov or agency sites.",
+          "Read the full agency solicitation.",
+          "Confirm eligibility and registration requirements.",
+          "Submit proposal through the agency's SBIR/STTR process before the closing date."
+        ]
+      },
+      "status": "active",
+      "source": "https://www.sbir.gov/apply"
+    },
+    {
+      "_id": "uttarakhand-startup-policy-2023",
+      "type": "funding_opportunity",
+      "grant_name": "Uttarakhand Startup Policy 2023 Incentives",
+      "provider": {
+        "name": "Startup Uttarakhand",
+        "type": "government"
+      },
+      "description": "State startup policy portal for recognition, policy benefits, seed funding events, IP support, public procurement support, and startup challenges.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": null,
+        "currency": "INR",
+        "funding_type": "seed_funding"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "mvp",
+          "early-stage",
+          "growth"
+        ],
+        "industries": [
+          "technology",
+          "tourism",
+          "agriculture",
+          "healthcare",
+          "sustainability",
+          "manufacturing"
+        ],
+        "allowed_locations": [
+          "Uttarakhand"
+        ],
+        "company_requirements": [
+          "Startup should meet Uttarakhand Startup Policy and Government of India startup definition requirements.",
+          "Startup should have or establish office and substantial operations in Uttarakhand where required."
+        ],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://startuputtarakhand.uk.gov.in/",
+        "required_documents": [
+          "Company incorporation certificate or registration proof",
+          "Founder identity and address proof",
+          "Pitch deck or business plan",
+          "Product or prototype description",
+          "Use-of-funds plan",
+          "Financial projections or recent financial statements",
+          "Startup recognition details",
+          "Policy benefit or challenge-specific documents"
+        ],
+        "application_steps": [
+          "Register on the Startup Uttarakhand portal.",
+          "Apply for recognition or the relevant policy benefit.",
+          "Submit required documents for the chosen incentive, challenge, or support program.",
+          "Track application status through the portal."
+        ]
+      },
+      "status": "active",
+      "source": "https://startuputtarakhand.uk.gov.in/"
+    }
+  ]
+}

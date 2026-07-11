@@ -1,0 +1,89 @@
+{
+  "docs": [
+    {
+      "_id": "birac-big",
+      "type": "grant",
+      "grant_name": "Biotechnology Ignition Grant",
+      "provider": {
+        "name": "BIRAC",
+        "type": "government"
+      },
+      "description": "Funding support for biotechnology startups.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 5000000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype",
+          "early-stage"
+        ],
+        "industries": [
+          "biotechnology",
+          "healthcare"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": "2026-08-31",
+        "application_url": "https://example.com/apply",
+        "required_documents": [
+          "business plan",
+          "pitch deck",
+          "identity proof"
+        ],
+        "application_steps": []
+      },
+      "status": "active"
+    },
+    {
+      "_id": "meity-tide",
+      "type": "grant",
+      "grant_name": "MeitY TIDE 2.0",
+      "provider": {
+        "name": "MeitY",
+        "type": "government"
+      },
+      "description": "Funding support for technology startups.",
+      "funding": {
+        "minimum_amount": null,
+        "maximum_amount": 700000,
+        "currency": "INR",
+        "funding_type": "grant"
+      },
+      "eligibility": {
+        "startup_stages": [
+          "idea",
+          "prototype"
+        ],
+        "industries": [
+          "technology",
+          "artificial intelligence"
+        ],
+        "allowed_locations": [
+          "India"
+        ],
+        "company_requirements": [],
+        "applicant_requirements": [],
+        "exclusions": []
+      },
+      "application": {
+        "open_date": null,
+        "deadline": null,
+        "application_url": "https://example.com/apply",
+        "required_documents": [],
+        "application_steps": []
+      },
+      "status": "active"
+    }
+  ]
+}

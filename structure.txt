@@ -1,0 +1,117 @@
+                    ┌─────────────────────────┐
+                    │     Next.js Website     │
+                    │                         │
+                    │ Founder + Admin screens │
+                    └────────────┬────────────┘
+                                 │ HTTPS
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     FastAPI Backend     │
+                    │   IBM Code Engine App   │
+                    └────────────┬────────────┘
+                                 │
+       ┌─────────────────────────┼──────────────────────────┐
+       │                         │                          │
+       ▼                         ▼                          ▼
+┌──────────────┐       ┌──────────────────┐       ┌─────────────────┐
+│ IBM Cloudant │       │ IBM Cloud Object │       │   watsonx.ai    │
+│              │       │     Storage      │       │    Granite      │
+│ Grants       │       │                  │       │                 │
+│ Profiles     │       │ PDFs             │       │ Extraction      │
+│ Applications │       │ Raw pages        │       │ Explanation     │
+│ Matches      │       │ Search index     │       │ Draft writing   │
+└──────────────┘       └──────────────────┘       └─────────────────┘
+                                 ▲
+                                 │
+                    ┌────────────┴────────────┐
+                    │ IBM Code Engine Jobs   │
+                    │                        │
+                    │ Source refresh         │
+                    │ PDF processing         │
+                    │ Deadline checking      │
+                    └─────────────────────────┘
+
+
+
+
+
+
+
+
+
+
+
+startup-funding-finder/
+│
+├── apps/
+│   ├── web/                         # Next.js frontend
+│   │   ├── app/
+│   │   │   ├── dashboard/
+│   │   │   ├── grants/
+│   │   │   ├── startup-profile/
+│   │   │   ├── applications/
+│   │   │   └── admin/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── types/
+│   │
+│   └── api/                         # FastAPI backend
+│       ├── main.py
+│       ├── config.py
+│       │
+│       ├── api/
+│       │   ├── grants.py
+│       │   ├── profiles.py
+│       │   ├── matching.py
+│       │   ├── applications.py
+│       │   ├── assistant.py
+│       │   └── admin.py
+│       │
+│       ├── models/
+│       │   ├── grant.py
+│       │   ├── startup.py
+│       │   ├── eligibility.py
+│       │   ├── application.py
+│       │   └── document.py
+│       │
+│       ├── services/
+│       │   ├── cloudant_service.py
+│       │   ├── object_storage_service.py
+│       │   ├── watsonx_service.py
+│       │   ├── document_service.py
+│       │   ├── extraction_service.py
+│       │   ├── eligibility_service.py
+│       │   ├── matching_service.py
+│       │   ├── retrieval_service.py
+│       │   └── drafting_service.py
+│       │
+│       └── repositories/
+│           ├── grant_repository.py
+│           ├── profile_repository.py
+│           └── application_repository.py
+│
+├── workers/
+│   ├── source_sync/
+│   ├── document_processing/
+│   ├── embedding_index/
+│   └── deadline_checker/
+│
+├── shared/
+│   ├── prompts/
+│   ├── schemas/
+│   └── constants/
+│
+├── infrastructure/
+│   ├── docker/
+│   ├── code-engine/
+│   └── cloudant/
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   ├── evaluation/
+│   └── sample_documents/
+│
+├── .env.example
+├── docker-compose.yml
+└── README.md

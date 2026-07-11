@@ -1,0 +1,9 @@
+{
+  "choices": [
+    {
+      "message": {
+        "content": "I have compiled a tailored application proposal draft for **Startup India Seed Fund Scheme (SISFS)** based on your profile and industry standards:\n\n### 📄 Proposal Draft Outline\n\n#### 1. Executive Summary\nAgriTech Innovators is a Karnataka-based DeepTech startup building smart, low-cost solar-powered IoT soil moisture sensors. We seek seed funding of **₹50,00,000** through the Startup India Seed Fund Scheme to finalize our MVP, execute field trials with 150 farmers in Karnataka, and establish early-stage manufacturing channels.\n\n#### 2. Problem Statement\nSmallholder farmers in India lose up to 45% of crop productivity due to mismanaged irrigation, lack of real-time soil data (NPK, pH, moisture), and unpredictable climate conditions. Current agricultural monitoring hardware is prohibitively expensive (ranging from ₹15,000 to ₹50,000 per unit), making it inaccessible for average Indian farms.\n\n#### 3. Solution & Technology\nOur product is a ₹2,500 solar-powered IoT sensor array that measures NPK ratios, pH level, and moisture content. It connects to the cellular network to push automated advice to farmers in local languages via SMS and WhatsApp. \n\n#### 4. Proposed Budget & Timeline\n- **Months 1-3 (MVP Optimization)**: ₹15,00,000\n- **Months 4-8 (Field Trials & Validation)**: ₹20,00,000\n- **Months 9-12 (Manufacturing & Commercial Launch)**: ₹15,00,000\n\nWould you like me to expand on any specific section, or draft the budget breakdown details?"
+      }
+    }
+  ]
+}

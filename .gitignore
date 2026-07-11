@@ -1,0 +1,33 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.idea/
+.vscode/
+
+# Testing and caching
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases and vector stores
+chroma_data/
+chroma_test/
+db/
+*.sqlite
+*.sqlite3
+*.db
+
+# Temporary / scratch files
+scratch/

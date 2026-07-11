@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundBot | AI Grant Assistant</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Marked.js for Markdown Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-panel: rgba(20, 20, 30, 0.6);
+            --border-glow: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-family: 'Outfit', sans-serif;
+
+            /* Tool execution variables */
+            --tool-bg: rgba(99, 102, 241, 0.06);
+            --tool-border: rgba(99, 102, 241, 0.25);
+            --tool-text: #818cf8;
+            --tool-active: #6366f1;
+            --tool-success: #22c55e;
+            --tool-error: #ef4444;
+            --status-running: #f59e0b;
+            --status-complete: #22c55e;
+            --status-error: #ef4444;
+
+            --transition-fast: 150ms;
+            --transition-normal: 300ms;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 25%);
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- LEFT SIDEBAR (Profile Manager) --- */
+        .sidebar {
+            width: 320px;
+            height: 100%;
+            border-right: 1px solid var(--border-glow);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .brand h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        .brand p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .profile-form { display: flex; flex-direction: column; gap: 14px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        label { font-size: 0.8rem; font-weight: 600; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px;}
+        
+        input, select, textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+
+        button.btn-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        button.btn-primary:hover { opacity: 0.9; }
+        button.btn-primary:active { transform: scale(0.98); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+
+        #profile-status {
+            font-size: 0.85rem;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            display: none;
+            line-height: 1.4;
+        }
+
+        /* --- CENTER PANEL (Main Chat Area) --- */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            height: 100%;
+        }
+        
+        .chat-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            max-width: 85%;
+            animation: slideUp 0.3s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+            line-height: 1.5;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 16px 16px 4px 16px;
+            font-size: 0.98rem;
+        }
+
+        .message.agent {
+            align-self: flex-start;
+            background: var(--bg-panel);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-main);
+            padding: 18px 22px;
+            border-radius: 16px 16px 16px 4px;
+            font-size: 0.98rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .message.agent h1, .message.agent h2, .message.agent h3 {
+            margin-top: 0.8em; margin-bottom: 0.4em; color: #fff;
+        }
+        .message.agent h1:first-child, .message.agent h2:first-child { margin-top: 0; }
+        .message.agent p { margin-bottom: 0.8em; }
+        .message.agent p:last-child { margin-bottom: 0; }
+        .message.agent ul, .message.agent ol { margin-bottom: 0.8em; padding-left: 1.5em; }
+        .message.agent li { margin-bottom: 0.4em; }
+        .message.agent strong { color: #fff; font-weight: 600; }
+        .message.agent pre {
+            background: #000; padding: 12px; border-radius: 8px; overflow-x: auto; margin-bottom: 0.8em;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .message.agent code {
+            font-family: monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;
+        }
+
+        /* Collapsible tool pipeline inline with chat */
+        .inline-tool-pipeline {
+            align-self: flex-start;
+            background: rgba(99, 102, 241, 0.04);
+            border: 1px dashed var(--tool-border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease forwards;
+        }
+
+        .pipeline-header {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            color: var(--tool-text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            background: rgba(99, 102, 241, 0.02);
+            user-select: none;
+        }
+
+        .pipeline-header:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .pipeline-steps {
+            padding: 8px 16px;
+            border-top: 1px dashed rgba(99, 102, 241, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .pipeline-step {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pipeline-step.running { color: var(--status-running); }
+        .pipeline-step.complete { color: var(--text-muted); }
+        .pipeline-step.complete .step-status { color: var(--status-complete); }
+        .pipeline-step.error { color: var(--status-error); }
+
+        .pipeline-step-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            align-self: flex-start;
+            background: var(--bg-panel);
+            padding: 12px 20px;
+            border-radius: 20px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .dot {
+            width: 8px; height: 8px; background: var(--text-muted); border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Quick actions styling */
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            animation: slideUp 0.3s ease forwards;
+        }
+        .quick-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast) ease;
+        }
+        .quick-btn:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .chat-input-wrapper {
+            padding: 20px 30px;
+            background: var(--bg-dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .chat-input-box {
+            display: flex;
+            gap: 12px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 8px 12px;
+            border-radius: 12px;
+            transition: border-color 0.2s;
+        }
+        .chat-input-box:focus-within {
+            border-color: var(--primary);
+        }
+        .chat-input-box input {
+            border: none; background: transparent; padding: 10px; box-shadow: none; font-size: 1rem;
+            width: 100%; color: white;
+        }
+        .chat-input-box input:focus { box-shadow: none; outline: none; }
+        
+        .send-btn {
+            background: var(--primary);
+            color: white; border: none; border-radius: 8px; padding: 0 20px;
+            font-weight: 600; cursor: pointer; transition: background 0.2s;
+        }
+        .send-btn:hover { background: var(--primary-hover); }
+
+        /* --- RIGHT SIDEBAR (Agent Activity Timeline) --- */
+        .tool-panel {
+            width: 320px;
+            height: 100%;
+            border-left: 1px solid var(--border-glow);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-shrink: 0;
+            z-index: 10;
+            transition: width var(--transition-normal) ease;
+        }
+
+        .tool-panel.collapsed {
+            width: 0;
+            padding: 0;
+            border-left: none;
+        }
+
+        .tool-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .tool-panel-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .toggle-panel-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 4px;
+            transition: color var(--transition-fast);
+        }
+        .toggle-panel-btn:hover {
+            color: white;
+        }
+
+        .tool-timeline {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-right: 4px;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px 14px;
+            transition: all var(--transition-normal) ease;
+            animation: slideUp 0.25s ease forwards;
+        }
+
+        .tool-card.running {
+            border-left: 3px solid var(--status-running);
+            background: rgba(245, 158, 11, 0.02);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.05);
+        }
+
+        .tool-card.complete {
+            border-left: 3px solid var(--status-complete);
+            background: rgba(34, 197, 94, 0.01);
+        }
+
+        .tool-card.error {
+            border-left: 3px solid var(--status-error);
+            background: rgba(239, 68, 68, 0.02);
+        }
+
+        .tool-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .tool-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .tool-icon {
+            font-size: 1rem;
+        }
+
+        .tool-status-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .tool-status-badge.running { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .tool-status-badge.complete { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .tool-status-badge.error { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        .tool-description {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .tool-details {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            padding: 8px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            max-height: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            margin-bottom: 8px;
+            color: #a5b4fc;
+        }
+
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 8px;
+        }
+
+        .tool-duration {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tool-token-cost {
+            color: #c084fc;
+            font-weight: 500;
+        }
+
+        /* Timeline stats card */
+        .tool-summary {
+            margin-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .summary-stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .stat-value.tokens {
+            color: #c084fc;
+        }
+
+        /* Floating action buttons to toggle activity panel */
+        .floating-action-bar {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 20;
+        }
+
+        /* Scrollbars styling */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+        /* Responsive styling */
+        @media (max-width: 1100px) {
+            .tool-panel { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: 40%; border-right: none; border-bottom: 1px solid var(--border-glow); }
+            .chat-container { height: 60%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Sidebar: Profile Setup & Capabilities -->
+    <aside class="sidebar glass-panel">
+        <div class="brand">
+            <h1>FundBot</h1>
+            <p>AI-Powered Grant Matching</p>
+        </div>
+
+        <div class="profile-form">
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="company_name" placeholder="e.g. AgriTech Innovators" value="AgriTech Innovators">
+            </div>
+            
+            <div class="form-group">
+                <label>Startup Stage</label>
+                <select id="stage">
+                    <option value="idea">Idea</option>
+                    <option value="prototype">Prototype</option>
+                    <option value="early-stage" selected>Early Stage (Pre-revenue)</option>
+                    <option value="growth-stage">Growth Stage</option>
+                    <option value="scaling">Scaling</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Industry</label>
+                <input type="text" id="industry" placeholder="e.g. Agriculture, AI" value="Agriculture, DeepTech">
+            </div>
+
+            <div class="form-group">
+                <label>What does your startup do?</label>
+                <textarea id="description" rows="4" placeholder="Describe your startup in 3–6 sentences. Explain the problem you're solving, your product, target customers, technology, and what makes your startup unique."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Location (State, Country)</label>
+                <input type="text" id="location" placeholder="e.g. Karnataka, India" value="Karnataka, India">
+            </div>
+            
+            <div class="form-group">
+                <label>Funding Needed (INR)</label>
+                <input type="number" id="funding" placeholder="5000000" value="5000000">
+            </div>
+
+            <button class="btn-primary" id="saveProfileBtn">Save Profile & Connect</button>
+            <div id="profile-status"></div>
+            
+            <div class="capabilities-section" style="margin-top: 10px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h3 style="font-size: 0.8rem; font-weight: 600; color: #cbd5e1; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">My Capabilities</h3>
+                <ul style="font-size: 0.8rem; color: #94a3b8; padding-left: 0; list-style: none; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                    <li><span style="margin-right: 6px;">🎯</span> Match grants to your profile</li>
+                    <li><span style="margin-right: 6px;">🔍</span> Deep semantic grant search</li>
+                    <li><span style="margin-right: 6px;">✅</span> Check specific eligibility</li>
+                    <li><span style="margin-right: 6px;">📝</span> Draft custom grant proposals</li>
+                    <li><span style="margin-right: 6px;">💬</span> Answer funding questions</li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Center Area: Chat consultation -->
+    <main class="chat-container">
+        <div class="chat-header">
+            <div>
+                <h3 style="font-weight: 500;">Consultation Room</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Powered by IBM Granite AI</p>
+            </div>
+            <div class="floating-action-bar">
+                <button class="toggle-panel-btn" id="toggleToolPanelHeader" title="Toggle Activity Panel">📋 Activity Timeline</button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="message agent">
+                <p>Welcome to FundBot! 👋</p>
+                <p>Please fill out your <strong>Startup Profile</strong> in the left panel and click "Save Profile & Connect" to begin. Once connected, I'll search for the best grants tailored exactly to your needs!</p>
+                
+                <div class="quick-actions" id="quick-actions" style="display: none;">
+                    <button class="quick-btn" data-query="Find matching grants">🎯 Find Matching Grants</button>
+                    <button class="quick-btn" data-query="Search for seed funding opportunities in agriculture">🔍 Agriculture Seed Search</button>
+                    <button class="quick-btn" data-query="Check my eligibility for Startup India Seed Fund Scheme">✅ Check SISFS Eligibility</button>
+                    <button class="quick-btn" data-query="Draft a proposal for Startup India Seed Fund Scheme">📝 Draft SISFS Proposal</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typing-indicator">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <span id="typing-text" style="margin-left: 8px; font-size: 0.9rem; color: var(--text-muted);">FundBot is thinking & searching...</span>
+        </div>
+
+        <div class="chat-input-wrapper">
+            <div class="chat-input-box">
+                <input type="text" id="chat-input" placeholder="Ask about grants, eligibility, or ask to draft a proposal..." disabled>
+                <button class="send-btn" id="sendBtn" disabled>Send</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Right Area: Agent Activity Log / Timeline -->
+    <aside class="tool-panel glass-panel" id="tool-panel">
+        <div class="tool-panel-header">
+            <h3>Agent Activity</h3>
+            <button class="toggle-panel-btn" id="hideToolPanel" title="Hide Panel">✖</button>
+        </div>
+
+        <div class="tool-timeline" id="tool-timeline">
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 40px; padding: 20px;">
+                No agent activities logged yet. Trigger matching, eligibility checks, or search to see live tools execute.
+            </div>
+        </div>
+
+        <div class="tool-summary">
+            <div class="summary-stat">
+                <span class="stat-label">Total Tools Run</span>
+                <span class="stat-value" id="stat-total-calls">0</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">Est. Token Cost</span>
+                <span class="stat-value tokens" id="stat-total-tokens">0 tokens</span>
+            </div>
+            <div class="summary-stat">
+                <span class="stat-label">Total Duration</span>
+                <span class="stat-value" id="stat-total-time">0 ms</span>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        const API_BASE = "http://localhost:8000/api";
+        const WS_BASE = "ws://localhost:8000/api";
+        
+        let currentProfileId = null;
+        let currentSessionId = null;
+        let chatSocket = null;
+        
+        // Stats counters
+        let totalCallsCount = 0;
+        let totalTokensCount = 0;
+        let totalTimeMs = 0;
+        
+        // Track the current active inline tool pipeline element
+        let currentPipelineElement = null;
+
+        // Elements
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+        const profileStatus = document.getElementById('profile-status');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chat-messages');
+        const typingIndicator = document.getElementById('typing-indicator');
+        const typingText = document.getElementById('typing-text');
+        
+        const toolPanel = document.getElementById('tool-panel');
+        const toolTimeline = document.getElementById('tool-timeline');
+        const toggleToolPanelHeader = document.getElementById('toggleToolPanelHeader');
+        const hideToolPanel = document.getElementById('hideToolPanel');
+        
+        const statTotalCalls = document.getElementById('stat-total-calls');
+        const statTotalTokens = document.getElementById('stat-total-tokens');
+        const statTotalTime = document.getElementById('stat-total-time');
+        const quickActions = document.getElementById('quick-actions');
+
+        // Font Icons Map
+        const TOOL_ICONS = {
+            search_grants: "🔍",
+            get_grant_detail: "📄",
+            match_profile: "🎯",
+            check_eligibility: "✅",
+            draft_proposal: "📝",
+            explain_grant: "💡",
+            semantic_search: "🧠",
+        };
+
+        const TOOL_LABELS = {
+            search_grants: "Search Grants (Rule-based)",
+            get_grant_detail: "Get Grant Details",
+            match_profile: "Match Profile to Database",
+            check_eligibility: "AI Eligibility Analysis",
+            draft_proposal: "Draft Proposal Section",
+            explain_grant: "Explain Grant Details",
+            semantic_search: "Vector Semantic Search",
+        };
+
+        // Panel Toggle Event Listeners
+        toggleToolPanelHeader.addEventListener('click', () => {
+            toolPanel.classList.toggle('collapsed');
+        });
+        
+        hideToolPanel.addEventListener('click', () => {
+            toolPanel.classList.add('collapsed');
+        });
+
+        // Markdown config
+        marked.setOptions({ breaks: true, gfm: true });
+
+        // Helper: Append Message
+        function appendMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `message ${role}`;
+            
+            if (role === 'agent') {
+                div.innerHTML = marked.parse(text);
+            } else {
+                div.textContent = text;
+            }
+            
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Inline Collapsible Tool Pipeline Creators/Updaters
+        function createInlinePipeline() {
+            const pipelineDiv = document.createElement('div');
+            pipelineDiv.className = 'inline-tool-pipeline';
+            
+            const header = document.createElement('div');
+            header.className = 'pipeline-header';
+            header.innerHTML = `<span>⚙️ Running tools...</span> <span>▼</span>`;
+            
+            const steps = document.createElement('div');
+            steps.className = 'pipeline-steps';
+            
+            pipelineDiv.appendChild(header);
+            pipelineDiv.appendChild(steps);
+            
+            header.addEventListener('click', () => {
+                const isHidden = steps.style.display === 'none';
+                steps.style.display = isHidden ? 'flex' : 'none';
+                header.querySelector('span:last-child').textContent = isHidden ? '▲' : '▼';
+            });
+            
+            chatMessages.appendChild(pipelineDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return { pipelineDiv, header, steps, start: Date.now(), count: 0 };
+        }
+
+        function addInlineStep(pipeline, toolName, label) {
+            pipeline.count += 1;
+            const stepId = `step-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'pipeline-step running';
+            stepDiv.id = stepId;
+            stepDiv.innerHTML = `
+                <div class="pipeline-step-dot"></div>
+                <span>Running ${label}...</span>
+            `;
+            pipeline.steps.appendChild(stepDiv);
+            pipeline.header.querySelector('span:first-child').innerHTML = `⚙️ Agent used ${pipeline.count} tool(s)`;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return stepId;
+        }
+
+        function updateInlineStepComplete(stepId, label, durationMs, summary) {
+            const stepDiv = document.getElementById(stepId);
+            if (stepDiv) {
+                stepDiv.className = 'pipeline-step complete';
+                stepDiv.innerHTML = `
+                    <span class="step-status">✔</span>
+                    <span><strong>${label}</strong> completed in ${durationMs}ms - <i>${summary}</i></span>
+                `;
+            }
+        }
+
+        function updateInlineStepError(stepId, label, errorText) {
+            const stepDiv = document.getElementById(stepId);
+            if (stepDiv) {
+                stepDiv.className = 'pipeline-step error';
+                stepDiv.innerHTML = `
+                    <span class="step-status">❌</span>
+                    <span><strong>${label}</strong> failed: ${errorText}</span>
+                `;
+            }
+        }
+
+        // Sidebar Agent Timeline Managers
+        function addToolCardToTimeline(eventData) {
+            const icon = TOOL_ICONS[eventData.tool_name] || "⚙️";
+            const label = TOOL_LABELS[eventData.tool_name] || eventData.tool_name;
+            const cardId = `card-${eventData.tool_id}`;
+            
+            // Remove empty timeline placeholder if exists
+            if (toolTimeline.innerText.includes("No agent activities logged")) {
+                toolTimeline.innerHTML = "";
+            }
+            
+            const card = document.createElement('div');
+            card.className = 'tool-card running';
+            card.id = cardId;
+            card.innerHTML = `
+                <div class="tool-card-header">
+                    <div class="tool-title">
+                        <span class="tool-icon">${icon}</span>
+                        <span>${label}</span>
+                    </div>
+                    <span class="tool-status-badge running">Running</span>
+                </div>
+                <div class="tool-description">${eventData.description}</div>
+                <div class="tool-details">
+                    <pre>${JSON.stringify(eventData.arguments, null, 2)}</pre>
+                </div>
+                <div class="tool-meta">
+                    <span class="tool-duration">⏳ Executing...</span>
+                    <span class="tool-token-cost">Estimated cost...</span>
+                </div>
+            `;
+            
+            toolTimeline.appendChild(card);
+            toolTimeline.scrollTop = toolTimeline.scrollHeight;
+        }
+
+        function updateToolCardCompleteInTimeline(eventData) {
+            const card = document.getElementById(`card-${eventData.tool_id}`);
+            if (card) {
+                card.className = 'tool-card complete';
+                const badge = card.querySelector('.tool-status-badge');
+                if (badge) {
+                    badge.className = 'tool-status-badge complete';
+                    badge.textContent = 'Complete';
+                }
+                
+                const meta = card.querySelector('.tool-meta');
+                if (meta) {
+                    meta.innerHTML = `
+                        <span class="tool-duration">⏱ ${eventData.duration_ms}ms</span>
+                        <span class="tool-token-cost">${eventData.token_cost} tokens</span>
+                    `;
+                }
+                
+                // Add result summaries
+                const description = card.querySelector('.tool-description');
+                if (description) {
+                    description.innerHTML = `${description.innerHTML}<br><span style="color:#4ade80; font-weight:500; font-size:0.75rem;">Summary: ${eventData.result_summary}</span>`;
+                }
+            }
+            
+            // Update panel totals
+            totalCallsCount += 1;
+            totalTokensCount += eventData.token_cost;
+            totalTimeMs += eventData.duration_ms;
+            
+            statTotalCalls.textContent = totalCallsCount;
+            statTotalTokens.textContent = `${totalTokensCount} tokens`;
+            statTotalTime.textContent = `${totalTimeMs} ms`;
+        }
+
+        function updateToolCardErrorInTimeline(cardId, errorText) {
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.className = 'tool-card error';
+                const badge = card.querySelector('.tool-status-badge');
+                if (badge) {
+                    badge.className = 'tool-status-badge error';
+                    badge.textContent = 'Failed';
+                }
+                const description = card.querySelector('.tool-description');
+                if (description) {
+                    description.innerHTML += `<br><span style="color:var(--status-error); font-size:0.75rem;">Error: ${errorText}</span>`;
+                }
+            }
+        }
+
+        // Connect WebSocket with robust handling and auto-reconnection
+        let reconnectAttempts = 0;
+        const MAX_RECONNECT = 5;
+
+        function connectWebSocket(sessionId) {
+            if (chatSocket) chatSocket.close();
+            chatSocket = new WebSocket(`${WS_BASE}/chat/ws/${sessionId}`);
+
+            chatSocket.onopen = () => {
+                reconnectAttempts = 0;
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                quickActions.style.display = 'flex';
+                
+                appendMessage('agent', "Profile successfully linked! I've loaded your context. How can I assist you with funding today? Try asking me to **'find matching grants'**.");
+                chatInput.focus();
+            };
+
+            chatSocket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                
+                switch (data.type) {
+                    case "thinking":
+                        // Start inline pipeline if not created
+                        if (!currentPipelineElement) {
+                            currentPipelineElement = createInlinePipeline();
+                        }
+                        chatMessages.appendChild(typingIndicator);
+                        typingText.textContent = data.content;
+                        typingIndicator.style.display = 'flex';
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        break;
+                    
+                    case "tool_start":
+                        // Ensure inline pipeline exists
+                        if (!currentPipelineElement) {
+                            currentPipelineElement = createInlinePipeline();
+                        }
+                        
+                        const label = TOOL_LABELS[data.tool_name] || data.tool_name;
+                        // Add step inline
+                        const stepId = addInlineStep(currentPipelineElement, data.tool_name, label);
+                        // Store the step ID mapping
+                        data.stepId = stepId;
+                        
+                        // Log to right panel
+                        addToolCardToTimeline(data);
+                        
+                        // Keep mapping globally to fetch on tool_complete
+                        if (!window._activeSteps) window._activeSteps = {};
+                        window._activeSteps[data.tool_id] = data;
+                        break;
+                    
+                    case "tool_complete":
+                        const activeData = window._activeSteps ? window._activeSteps[data.tool_id] : null;
+                        const toolLabel = TOOL_LABELS[data.tool_name] || data.tool_name;
+                        
+                        if (activeData && activeData.stepId && currentPipelineElement) {
+                            updateInlineStepComplete(activeData.stepId, toolLabel, data.duration_ms, data.result_summary);
+                        }
+                        
+                        // Update right panel card
+                        updateToolCardCompleteInTimeline(data);
+                        break;
+                    
+                    case "ai_processing":
+                        typingText.textContent = data.content;
+                        typingIndicator.style.display = 'flex';
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        break;
+                    
+                    case "response":
+                        typingIndicator.style.display = 'none';
+                        appendMessage('agent', data.content);
+                        enableInput();
+                        
+                        // Finalize inline pipeline summary
+                        if (currentPipelineElement) {
+                            const totalTime = Date.now() - currentPipelineElement.start;
+                            currentPipelineElement.header.querySelector('span:first-child').innerHTML = `⚙️ Agent used ${currentPipelineElement.count} tool(s) (${(totalTime/1000).toFixed(1)}s)`;
+                            currentPipelineElement = null; // reset for next query
+                        }
+                        break;
+                    
+                    case "error":
+                        typingIndicator.style.display = 'none';
+                        appendMessage('agent', `⚠️ *Error: ${data.content}*`);
+                        enableInput();
+                        
+                        // Mark active steps as failed
+                        if (window._activeSteps && currentPipelineElement) {
+                            for (let tid in window._activeSteps) {
+                                const step = window._activeSteps[tid];
+                                updateInlineStepError(step.stepId, step.tool_name, data.content);
+                                updateToolCardErrorInTimeline(`card-${tid}`, data.content);
+                            }
+                        }
+                        currentPipelineElement = null;
+                        break;
+                }
+            };
+
+            chatSocket.onclose = (event) => {
+                chatInput.disabled = true;
+                sendBtn.disabled = true;
+                console.log("WebSocket disconnected", event);
+                
+                // If it wasn't a clean close, try to reconnect
+                if (!event.wasClean && reconnectAttempts < MAX_RECONNECT) {
+                    reconnectAttempts++;
+                    const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 10000);
+                    appendMessage('agent', `⚠️ Connection lost. Attempting to reconnect in ${(delay/1000).toFixed(0)}s...`);
+                    setTimeout(() => connectWebSocket(sessionId), delay);
+                } else if (reconnectAttempts >= MAX_RECONNECT) {
+                    appendMessage('agent', `❌ Connection failed. Please try saving your profile again to establish a new session.`);
+                }
+            };
+            
+            chatSocket.onerror = (err) => {
+                console.error("WebSocket Error:", err);
+            };
+        }
+
+        function enableInput() {
+            chatInput.disabled = false;
+            sendBtn.disabled = false;
+            chatInput.focus();
+        }
+
+        // 1. Save Profile & Connect Session
+        saveProfileBtn.addEventListener('click', async () => {
+            saveProfileBtn.disabled = true;
+            saveProfileBtn.textContent = "Connecting...";
+
+            const payload = {
+                company_name: document.getElementById('company_name').value,
+                description: document.getElementById('description').value,
+                stage: document.getElementById('stage').value,
+                industries: document.getElementById('industry').value.split(',').map(s => s.trim()),
+                location: { country: document.getElementById('location').value },
+                funding_needed: { amount: parseInt(document.getElementById('funding').value), currency: "INR" }
+            };
+
+            try {
+                // Post Profile
+                const profRes = await fetch(`${API_BASE}/profiles`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!profRes.ok) throw new Error("Failed to save profile");
+                const profData = await profRes.json();
+                currentProfileId = profData.profile_id;
+
+                // Create Chat Session
+                const sessRes = await fetch(`${API_BASE}/chat/session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ profile_id: currentProfileId })
+                });
+
+                if (!sessRes.ok) throw new Error("Failed to create chat session");
+                const sessData = await sessRes.json();
+                currentSessionId = sessData.session_id;
+
+                // Update UI
+                profileStatus.style.display = 'block';
+                profileStatus.innerHTML = `✅ Linked! <br><span style="font-size:0.75rem; color:#94a3b8">Session: ${currentSessionId.substr(0,18)}...</span>`;
+                saveProfileBtn.textContent = "Update Profile";
+                saveProfileBtn.disabled = false;
+
+                // Connect WebSocket
+                connectWebSocket(currentSessionId);
+
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to backend: " + err.message);
+                saveProfileBtn.disabled = false;
+                saveProfileBtn.textContent = "Save Profile & Connect";
+            }
+        });
+
+        // 2. Send Chat Message
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            // Check websocket status
+            if (!chatSocket || chatSocket.readyState !== WebSocket.OPEN) {
+                // Fallback: If WebSocket is closed, trigger SSE streaming fallback
+                triggerSSEFallback(text);
+                return;
+            }
+
+            // UI updates
+            appendMessage('user', text);
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+
+            // Send via WS
+            chatSocket.send(JSON.stringify({ message: text }));
+        }
+
+        // SSE Fallback Streaming Implementation
+        async function triggerSSEFallback(text) {
+            if (!currentSessionId) {
+                alert("Please fill your profile and connect first.");
+                return;
+            }
+            
+            appendMessage('user', text);
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            
+            typingText.textContent = "Connecting to SSE Fallback Stream...";
+            typingIndicator.style.display = 'flex';
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                const response = await fetch(`${API_BASE}/chat/message/stream`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ session_id: currentSessionId, message: text })
+                });
+                
+                if (!response.ok) throw new Error("SSE Stream Request failed");
+                
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let buffer = "";
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    
+                    buffer += decoder.decode(value);
+                    const lines = buffer.split("\n\n");
+                    buffer = lines.pop(); // keep partial line in buffer
+                    
+                    for (const line of lines) {
+                        if (line.startsWith("data: ")) {
+                            const rawData = line.slice(6).trim();
+                            if (rawData === "[DONE]") {
+                                typingIndicator.style.display = 'none';
+                                enableInput();
+                                continue;
+                            }
+                            
+                            const data = JSON.parse(rawData);
+                            handleSSEEvent(data);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("SSE Fallback Error:", err);
+                typingIndicator.style.display = 'none';
+                appendMessage('agent', `❌ SSE Fallback Stream failed: ${err.message}`);
+                enableInput();
+            }
+        }
+        
+        function handleSSEEvent(data) {
+            switch (data.type) {
+                case "thinking":
+                    if (!currentPipelineElement) {
+                        currentPipelineElement = createInlinePipeline();
+                    }
+                    typingText.textContent = data.content;
+                    typingIndicator.style.display = 'flex';
+                    break;
+                case "tool_start":
+                    if (!currentPipelineElement) {
+                        currentPipelineElement = createInlinePipeline();
+                    }
+                    const label = TOOL_LABELS[data.tool_name] || data.tool_name;
+                    const stepId = addInlineStep(currentPipelineElement, data.tool_name, label);
+                    data.stepId = stepId;
+                    
+                    addToolCardToTimeline(data);
+                    if (!window._activeSteps) window._activeSteps = {};
+                    window._activeSteps[data.tool_id] = data;
+                    break;
+                case "tool_complete":
+                    const activeData = window._activeSteps ? window._activeSteps[data.tool_id] : null;
+                    const toolLabel = TOOL_LABELS[data.tool_name] || data.tool_name;
+                    if (activeData && activeData.stepId && currentPipelineElement) {
+                        updateInlineStepComplete(activeData.stepId, toolLabel, data.duration_ms, data.result_summary);
+                    }
+                    updateToolCardCompleteInTimeline(data);
+                    break;
+                case "ai_processing":
+                    typingText.textContent = data.content;
+                    break;
+                case "response":
+                    typingIndicator.style.display = 'none';
+                    appendMessage('agent', data.content);
+                    if (currentPipelineElement) {
+                        const totalTime = Date.now() - currentPipelineElement.start;
+                        currentPipelineElement.header.querySelector('span:first-child').innerHTML = `⚙️ Agent used ${currentPipelineElement.count} tool(s) (${(totalTime/1000).toFixed(1)}s)`;
+                        currentPipelineElement = null;
+                    }
+                    break;
+                case "error":
+                    typingIndicator.style.display = 'none';
+                    appendMessage('agent', `⚠️ *Error: ${data.content}*`);
+                    if (window._activeSteps && currentPipelineElement) {
+                        for (let tid in window._activeSteps) {
+                            const step = window._activeSteps[tid];
+                            updateInlineStepError(step.stepId, step.tool_name, data.content);
+                            updateToolCardErrorInTimeline(`card-${tid}`, data.content);
+                        }
+                    }
+                    currentPipelineElement = null;
+                    break;
+            }
+        }
+
+        // Click handler for Quick Action Buttons
+        document.body.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('quick-btn')) {
+                const query = e.target.getAttribute('data-query');
+                chatInput.value = query;
+                sendMessage();
+            }
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>

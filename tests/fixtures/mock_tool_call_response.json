@@ -1,0 +1,18 @@
+{
+  "choices": [
+    {
+      "message": {
+        "tool_calls": [
+          {
+            "id": "call_mock_001",
+            "type": "function",
+            "function": {
+              "name": "search_grants",
+              "arguments": "{\"startup_stage\": \"early-stage\", \"industries\": [\"agriculture\", \"technology\"], \"location\": \"India\", \"limit\": 5}"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

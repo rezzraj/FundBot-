@@ -1,0 +1,18 @@
+{
+  "choices": [
+    {
+      "message": {
+        "tool_calls": [
+          {
+            "id": "call_mock_elig_001",
+            "type": "function",
+            "function": {
+              "name": "check_eligibility",
+              "arguments": "{\"grant_id\": \"startup-india-seed-fund-scheme\"}"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

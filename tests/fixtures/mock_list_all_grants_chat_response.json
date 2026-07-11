@@ -1,0 +1,9 @@
+{
+  "choices": [
+    {
+      "message": {
+        "content": "Here is the expanded list of grants that match your profile. While the first 3 remain the strongest matches, these additional options might also be worth exploring depending on your specific technology and funding needs:\n\n| Grant Name | Provider | Max Amount | Match Score | Key Benefit |\n| :--- | :--- | :--- | :--- | :--- |\n| **Startup India Seed Fund Scheme (SISFS)** | DPIIT, Government of India | ₹50,00,000 | 98% (Strong) | Ideal for proof-of-concept, prototype trials, and market entry. |\n| **BIRAC Biotech Ignition Grant (BIG)** | BIRAC, Department of Biotechnology | ₹50,00,000 | 92% (High) | High-quality seed support for bio-innovations & agritech devices. |\n| **Karnataka Startup Advancement Grant** | KSUM, Government of Karnataka | ₹20,00,000 | 85% (Good) | State-sponsored grant for Karnataka-based registered entities. |\n| **NIDHI PRAYAS** | DST, Government of India | ₹10,00,000 | 80% (Good) | Specifically for translating an innovative idea into a prototype. |\n| **Agri-Clinics and Agri-Business Centres (ACABC)** | NABARD / Ministry of Agriculture | Variable | 75% (Moderate) | Support for agri-entrepreneurs extending agricultural services. |\n| **Venture Capital Assistance Scheme** | SFAC | ₹50,00,000 | 70% (Moderate) | Interest-free loan to bridge the gap in capital for agri-projects. |\n| **Atal Innovation Mission (AIM) SEED** | NITI Aayog | ₹30,00,000 | 65% (Moderate) | Support for startups incubated at Atal Incubation Centres. |\n\nWould you like to check your specific eligibility for any of these, or draft a proposal for one?"
+      }
+    }
+  ]
+}

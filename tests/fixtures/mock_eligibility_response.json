@@ -1,0 +1,11 @@
+{
+  "eligible": true,
+  "score": 0.85,
+  "recommendation": "This startup meets all primary eligibility criteria for SISFS.",
+  "met_criteria": [
+    "Stage matches ('early-stage')",
+    "Industry matches ('agriculture', 'technology')",
+    "Location matches ('India')"
+  ],
+  "unmet_criteria": []
+}

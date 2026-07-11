@@ -1,0 +1,19 @@
+{
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "id": "call_mock_search_all",
+            "type": "function",
+            "function": {
+              "name": "search_grants",
+              "arguments": "{\"startup_stage\": \"early-stage\", \"industries\": [\"Agriculture\", \"DeepTech\"], \"location\": \"Karnataka\", \"limit\": 20}"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
