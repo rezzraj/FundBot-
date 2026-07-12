@@ -1,0 +1,9 @@
+.venv
+__pycache__
+.git
+.idea
+.pytest_cache
+*.pyc
+.env
+chroma_data
+chroma_test

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      # Any necessary environment variables can be placed here or in .env
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+
+  frontend:
+    # We use a lightweight python image just to run http.server 
+    image: python:3.11-slim
+    working_dir: /app/apps/frontend
+    volumes:
+      - ./apps/frontend:/app/apps/frontend
+    ports:
+      - "3000:3000"
+    command: python -m http.server 3000
