@@ -95,28 +95,9 @@ TOOLS = [
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "company_name": {"type": "string", "description": "Name of the startup."},
-                    "stage": {
-                        "type": "string",
-                        "enum": ["idea", "prototype", "early-stage", "growth-stage", "scaling"],
-                        "description": "Current startup stage.",
-                    },
-                    "industries": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "Industries the startup operates in.",
-                    },
-                    "location": {"type": "string", "description": "Startup's location (city, state, or country)."},
-                    "description": {"type": "string", "description": "Brief description of what the startup does."},
-                    "funding_amount": {"type": "number", "description": "Amount of funding needed."},
-                    "funding_types": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "Preferred funding types.",
-                    },
                     "top_n": {"type": "integer", "default": 5, "description": "Number of matches to return."},
                 },
-                "required": ["stage", "industries", "location"],
+                "required": [],
             },
         },
     },
@@ -230,7 +211,7 @@ Guidelines:
 - **CRITICAL FORMATTING RULE**: NEVER output raw JSON, lists of "Met Criteria", or "Unmet Criteria". NEVER use robotic formats. Always synthesize tool outputs into natural, conversational paragraphs. For example, instead of "Met Criteria: Industry matches 'technology'", say "This grant is a great fit because it specifically targets technology startups."
 - **TABLE FORMATTING RULE**: When listing multiple grants from a search or match, ALWAYS list the top 5 grants FIRST in a Markdown table. Do not provide a long detailed list of every grant unless the user explicitly asks for it (e.g., "list all" or "show more"). Simply mention that more are available.
 - **STRICT NO-LOOP RULE**: You must NEVER call the same tool multiple times in a row. If you perform any search (`semantic_search`, `search_grants`, `match_profile`), the output contains all the information you need. You MUST immediately reply to the user. **DO NOT iteratively call explain_grant or check_eligibility on the results.** If the user asked you to draft a proposal, perform ONE search to find the correct grant ID, then immediately call `draft_proposal` with that exact ID. NEVER call `explain_grant` when drafting a proposal.
-- **STRICT NO-ASKING RULE**: If a startup profile already exists in the system prompt, you MUST NEVER ask the user again for: startup description, industry, startup stage, location, or funding amount. Use the profile exactly as provided. If the user asks: "find matching grants", "find grants", "recommend grants", "search grants", or "funding opportunities", you MUST immediately call `match_profile`. Never respond with follow-up questions unless absolutely required. If description is empty, pass `description=""` instead of asking.
+- **STRICT NO-ASKING RULE**: If a startup profile already exists in the system prompt, you MUST NEVER ask the user again for: startup description, industry, startup stage, location, or funding amount. Use the profile exactly as provided. If the user asks: "find matching grants", "find grants", "recommend grants", "search grants", or "funding opportunities", you MUST immediately call `match_profile` without asking any follow-up questions.
 - **GENERAL CHAT RULE**: If the user asks a general question (e.g., "what can you do?", "hi", "how does this work?"), **DO NOT use any tools**. Just reply directly with a helpful, conversational answer based on your capabilities.
 - When drafting proposals, format them cleanly using Markdown. Always note that they need human review.
 - If you're unsure about eligibility, say so — never give false confidence.
@@ -292,18 +273,13 @@ class AgentService:
                 return json.dumps({"error": f"Grant '{arguments['grant_id']}' not found"})
                 
             elif tool_name == "match_profile":
-                profile = {
-                    "stage": arguments.get("stage"),
-                    "industries": arguments.get("industries", []),
-                    "location": {"country": arguments.get("location", "India")},
-                    "company_name": arguments.get("company_name", ""),
-                    "description": arguments.get("description", ""),
-                    "funding_needed": {
-                        "amount": arguments.get("funding_amount"),
-                        "types": arguments.get("funding_types", []),
-                        "currency": "INR",
-                    },
-                }
+                if not profile_id:
+                    return json.dumps({"error": "No profile context found. Please ensure a profile is loaded."})
+                
+                profile = self.cloudant.get_profile(profile_id)
+                if not profile:
+                    return json.dumps({"error": "Profile could not be retrieved from the database."})
+
                 matches = await self.matching.match_profile_to_grants(
                     profile, top_n=arguments.get("top_n", 5),
                 )
@@ -315,8 +291,8 @@ class AgentService:
                         "eligibility_status": m.eligible,
                         "why_it_matches": m.explanation,
                     }
-                    for m in matches if str(m.eligible) != "False" and not str(m.eligible).startswith("Not eligible") and m.final_score > 0
-                ], indent=2)
+                    for m in matches if m.final_score > 0
+                ][:arguments.get("top_n", 5)], indent=2)
 
             elif tool_name == "check_eligibility":
                 grant = self.cloudant.get_document(arguments["grant_id"])

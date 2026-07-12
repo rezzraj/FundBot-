@@ -261,9 +261,11 @@ def search_grants(
             or "any" in grant_stages
         )
 
-        industry_matches = bool(
-            requested_industries
-            & grant_industries
+        industry_matches = (
+            bool(requested_industries & grant_industries)
+            or "all sectors" in grant_industries
+            or "any" in grant_industries
+            or "all" in grant_industries
         )
 
         location_matches = (
