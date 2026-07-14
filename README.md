@@ -488,3 +488,87 @@ The test suite utilizes mocks located in `tests/mocks/` to verify agent loops an
 ### Long-Term
 *   Support fine-tuning support on local compliance documents.
 *   Integrate multi-currency exchange calculators.
+
+
+
+
+# Render Deployment Guide: Containerizing FundBot AI 🌐
+
+This guide outlines how **FundBot** is deployed to **Render** by packaging the application into a Docker image, exposing the FastAPI endpoints, and mounting the static frontend client.
+
+---
+
+##  The Containerization Setup
+
+FundBot provides a multi-container deployment model utilizing a production-ready `Dockerfile` and a local orchestration setup (`docker-compose.yml`).
+
+### 1. The Dockerfile
+The backend container is built from a slim Python 3.11 base image:
+*   **Base Image**: `python:3.11-slim`
+*   **Exposed Port**: `8080` (dynamic port binding)
+*   **Startup Command**: Runs Uvicorn dynamically binding to the host port specified by Render:
+    ```bash
+    uvicorn apps.api.main:app --host 0.0.0.0 --port ${PORT:-8080}
+    ```
+
+### 2. Local Docker Compose Composition
+For local staging, the `docker-compose.yml` launches two parallel services:
+-   `api`: Builds the root Dockerfile, forwards port `8080`, mounts the project code directory, and loads environmental keys from `.env`.
+-   `frontend`: Mounts `apps/frontend/` and spins up a static Python HTTP server on port `3000` to serve the user dashboard.
+
+---
+
+## 🚀 Steps to Deploy on Render
+
+Render fully supports building and running Docker-based web applications. Follow these steps to host your live application:
+
+### Step 1: Create a Render Web Service
+1.  Log in to your [Render Dashboard](https://dashboard.render.com/).
+2.  Click **New +** and select **Web Service**.
+3.  Connect your GitHub/GitLab repository hosting the FundBot code.
+
+### Step 2: Configure Service Runtime Settings
+Set the following options during the service creation wizard:
+*   **Name**: `fundbot-api` (or custom name)
+*   **Region**: Select the region closest to your target users.
+*   **Branch**: `main` (or your active production branch)
+*   **Runtime**: Select **Docker** (Render will automatically detect your root `Dockerfile`).
+*   **Instance Type**: Choose **Free** or **Starter** depending on your performance demands.
+
+### Step 3: Configure Environment Variables
+Navigate to the **Environment** tab of your Render Web Service dashboard and insert the following secret keys:
+
+| Environment Variable | Description | Value Source |
+| :--- | :--- | :--- |
+| `WATSONX_API_KEY` | IBM Watsonx IAM credential token | IBM Cloud dashboard |
+| `WATSONX_PROJECT_ID` | Watsonx workspace ID | IBM Watsonx console |
+| `WATSONX_URL` | Regional API endpoint | `https://eu-de.ml.cloud.ibm.com` |
+| `CLOUDANT_API_KEY` | Cloudant NoSQL database API key | IBM Cloud console |
+| `CLOUDANT_URL` | Cloudant service endpoint URL | IBM Cloud console |
+| `CLOUDANT_DATABASE` | Target database collection name | `startup-funding` |
+| `GEMINI_API_KEY` | Optional: Google Gemini validation key | Google AI Studio |
+
+---
+
+## ⚡ Dynamic Port Binding on Render
+
+Render dynamically assigns a port to web services using the `$PORT` environment variable. 
+
+FundBot's `Dockerfile` is built to capture this parameter:
+```dockerfile
+CMD ["sh", "-c", "uvicorn apps.api.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+```
+*   **Local Run**: Defaults to port `8080`.
+*   **Render Run**: Overrides the port value automatically with Render's target port (e.g., `10000`), opening the API endpoint.
+
+---
+
+## ⚠️ Key Deployment Considerations
+
+### 1. ChromaDB Ephemeral Storage
+Since Render's free tier has an ephemeral disk (which resets upon container restart), changes saved in local vector files will be wiped if the container sleeps.
+*   **Mitigation**: FundBot handles this seamlessly. On start, the backend's lifespan script pulls all active grants from Cloudant and re-indexes them into the local ChromaDB database in memory, ensuring search data is never lost.
+
+### 2. CORS Configurations
+Once deployed, make sure to update your FastAPI CORS configuration in your code to allow HTTP requests from your Render frontend origin.
+
