@@ -4,40 +4,6 @@
 
 ---
 
-## 📋 Table of Contents
-1. [Executive Summary](#-executive-summary)
-2. [Features & Capabilities](#-features--capabilities)
-3. [Architecture Overview](#-architecture-overview)
-4. [Repository Structure](#-repository-structure)
-5. [File-by-File Documentation](#-file-by-file-documentation)
-6. [Execution Flow](#-execution-flow)
-7. [Request Lifecycle Deep-Dive](#-request-lifecycle-deep-dive)
-8. [Folder Deep-Dive](#-folder-deep-dive)
-9. [AI Components & Prompts](#-ai-components--prompts)
-10. [Database & Storage Architecture](#-database--storage-architecture)
-11. [API Documentation](#-api-documentation)
-12. [Configuration & Environment Variables](#-configuration--environment-variables)
-13. [Dependency Analysis](#-dependency-analysis)
-14. [Startup Flow](#-startup-flow)
-15. [Frontend Architecture & Flow](#-frontend-architecture--flow)
-16. [Backend Architecture & Flow](#-backend-architecture--flow)
-17. [Authentication & Session Flow](#-authentication--session-flow)
-18. [Error Handling & Resiliency](#-error-handling--resiliency)
-19. [Logging & Diagnostics](#-logging--diagnostics)
-20. [Deployment & Infrastructure](#-deployment--infrastructure)
-21. [Testing & Validation](#-testing--validation)
-22. [Design Decisions & Trade-offs](#-design-decisions--trade-offs)
-23. [Performance & Optimization](#-performance--optimization)
-24. [Security Posture](#-security-posture)
-25. [Future Improvements & Roadmap](#-future-improvements--roadmap)
-26. [Contributing Guide](#-contributing-guide)
-27. [Troubleshooting](#-troubleshooting)
-28. [FAQ](#-faq)
-29. [Tech Stack](#-tech-stack)
-30. [Credits & Appendix](#-credits--appendix)
-
----
-
 ## 📖 Executive Summary
 
 ### What the Project Is
