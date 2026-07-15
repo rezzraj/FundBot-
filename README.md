@@ -1,5 +1,7 @@
 # FundBot AI: Autonomous Grant Discovery & Proposal Drafting Assistant 🚀
 
+### Deployed Link - [FundBot]([url](https://fundbot-frontend-12.vercel.app/))
+
 > An enterprise-grade, agentic conversational application designed to help Indian startups discover funding, automate eligibility screening, and draft compliance-ready proposals.
 
 ---
